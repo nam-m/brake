@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'menu.dart';
 // void main() => runApp(MyApp());
 
 // class MyApp extends StatelessWidget {
@@ -55,7 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => MenuPage(),
+              ));
+              },
           child: Text("Login",
               textAlign: TextAlign.center,
               style: style.copyWith(
@@ -99,13 +103,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   emailField,
                   SizedBox(height: 20.0),
                   passwordField,
-                  SizedBox(
-                    height: 35.0,
-                  ),
+                  SizedBox(height: 35.0,),
                   loginButton,
-                  SizedBox(
-                    height: 30.0,
-                  ),
+                  SizedBox(height: 30.0,),
                   Text("Forgot Password?",
                   textAlign: TextAlign.left,
                   style: style.copyWith(
@@ -114,9 +114,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   SizedBox(height: 30), //add space between "Forgot Password" and "signupButton"
                   signupButton,
-                  SizedBox(
-                    height: 0.0,
-                  ),
                 ],
               ),
             ),
