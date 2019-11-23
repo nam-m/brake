@@ -46,7 +46,11 @@ flutter:
   #  - images/a_dot_ham.jpeg
   assets:
     - brake_logo.png
-    - headset_icon.png
+    - headset.png
+    - settings.png
+    - record.png
+    - profile_pic.jpg
+    
   fonts:
     - family: League Spartan
       fonts:
