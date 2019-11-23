@@ -1,6 +1,6 @@
 # brake
 
-A new Flutter project.
+Flutter app for receiving EEG signal and notifying user when he/she loses focus
 
 ## Getting Started
 
