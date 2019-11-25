@@ -49,7 +49,7 @@ flutter:
     - headset.png
     - settings.png
     - record.png
-    - profile_pic.jpg
+    - profile_pic.jpg 
     
   fonts:
     - family: League Spartan
