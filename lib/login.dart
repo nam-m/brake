@@ -1,20 +1,5 @@
 import 'package:flutter/material.dart';
-import 'menu.dart';
-// void main() => runApp(MyApp());
-
-// class MyApp extends StatelessWidget {
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Brake Login',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: MyHomePage(title: 'Brake Login'),
-//     );
-//   }
-// }
+import 'dashboard.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -56,10 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) => MenuPage(),
-              ));
-              },
+            Navigator.push(
+              context, 
+              MaterialPageRoute(
+                builder: (context) => DashboardPage(),
+                )
+              );
+            },
           child: Text("Login",
               textAlign: TextAlign.center,
               style: style.copyWith(

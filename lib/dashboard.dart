@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'function.dart';
 
-class MenuPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
+  @override
+  _DashboardPageState createState() => _DashboardPageState();
+}
+
+class _DashboardPageState extends State<DashboardPage> {
   // This widget is the root of your application.
   TextStyle style = TextStyle(fontFamily: 'Open Sans');
 
@@ -29,16 +35,16 @@ class MenuPage extends StatelessWidget {
           crossAxisCount: 2,
           padding: EdgeInsets.all(3.0),
           children: <Widget>[
-            makeDashboardItem("Connect", menu_one_image),
-            makeDashboardItem("Focus", menu_two_image),
-            makeDashboardItem("Profile", menu_three_image),
-            makeDashboardItem("Settings", menu_four_image),
+            dashboardItem("Connect", menu_one_image),
+            dashboardItem("Focus", menu_two_image),
+            dashboardItem("Profile", menu_three_image),
+            dashboardItem("Settings", menu_four_image),
           ],
         ),
       ),
     );
   }
-  Card makeDashboardItem(String title, var image) {
+  Card dashboardItem(String title, var image) {
     return Card(
         elevation: 3.0,
         margin: new EdgeInsets.all(8.0),
@@ -47,8 +53,16 @@ class MenuPage extends StatelessWidget {
             color: Colors.white70,
             borderRadius: BorderRadius.circular(0.0),
           ),
-          child: new InkWell(
-            onTap: () {},
+          child: new InkWell( // InkWell: a rectangular area of a Material that responds to touch.
+            onTap: () {
+            Navigator.push(
+              context, 
+              MaterialPageRoute(
+                builder: (context) => FunctionPage(),
+                )
+              );
+            },
+            splashColor: Colors.lightBlueAccent,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
