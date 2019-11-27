@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 import 'connect.dart';
 import 'focus.dart';
 import 'profile.dart';
@@ -39,14 +40,7 @@ class _DashboardPageState extends State<DashboardPage> {
         borderRadius: BorderRadius.circular(12.0),
       ),
         child: new InkWell( // InkWell: a rectangular area of a Material that responds to touch.
-          onTap: () {
-            Navigator.push(
-              context, 
-              MaterialPageRoute(
-                builder: (context) => ConnectPage(),
-              )
-            );
-          },
+          onTap: () => _buildConnectDialog(context), 
           splashColor: Colors.lightBlueAccent,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -216,6 +210,60 @@ class _DashboardPageState extends State<DashboardPage> {
         ),
       );
   }
+
+  Widget _buildConnectDialog(BuildContext context) {
+    var cancelButton = FlatButton(
+    child: Text(
+      "Cancel",
+      style: style.copyWith(
+        color: Colors.grey,
+        fontSize: 18, 
+        fontWeight: FontWeight.bold),
+      ),
+      onPressed: () => Navigator.pop(context),  
+      );
+    var continueButton = FlatButton(
+      child: Text(
+        "Accept",
+        style: style.copyWith(
+          color: Colors.blue,
+          fontSize: 18, 
+          fontWeight: FontWeight.bold),
+        ),
+        onPressed: () => Navigator.pop(context), 
+      // onPressed: () {
+      // Navigator.push(
+      //   context, 
+      //   MaterialPageRoute(
+      //     builder: (context) => DashboardPage(),
+      //   )
+      // );
+      // },
+    );
+  // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text(
+        "Connect to Brake",
+        style: style.copyWith(
+          color: Colors.black,
+          fontSize: 20, 
+          fontWeight: FontWeight.bold),
+        ),
+      content: Text("Please enable Bluetooth to pair your device with Brake\n"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+  // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+  
   // Card dashboardItem(String title, dynamic image) {
   //   return Card(
   //     elevation: 3.0,
