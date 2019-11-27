@@ -81,17 +81,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center, //vertical
                 children: <Widget>[
                   SizedBox(
-                    height: 150.0,
+                    height: 130.0,
                     child: Image.asset(
-                      "assets/brake_logo.png",
+                      "assets/brake_logo_2.png",
                       fit: BoxFit.contain,
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: 50.0),
                   emailField,
                   SizedBox(height: 20.0),
                   passwordField,
-                  SizedBox(height: 35.0,),
+                  SizedBox(height: 40.0,),
                   loginButton,
                   SizedBox(height: 30.0,),
                   Text("Forgot Password?",

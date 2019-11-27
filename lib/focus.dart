@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/animation.dart';
-import 'animation.dart';
+import 'package:intl/intl.dart';
 import 'dart:async';
+import 'dashboard.dart';
+import 'animation.dart';
 
 class FocusPage extends StatefulWidget {
   @override
@@ -29,17 +30,28 @@ class _FocusPageState extends State<FocusPage> {
   
   @override
   Widget build(BuildContext context) {
-
+    var screenSize = MediaQuery.of(context).size;
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('kk:mm:ss \nEEE d MMM').format(now);
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( 
         title: Text('Wed, November 27th, 2019'),
+        // title: Text(formattedDate),
       ),
       body: new Container(
         color: Colors.white,
         padding: EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 300.0),
+            // new ClipPath(
+            //   child: new Container(
+            //     width: screenSize.width,
+            //     height: 200.0,
+            //     color: Colors.blue[500],
+            //   ),
+            //   clipper: new WaveClipper(now.value, sinWave),
+            // ),
+            SizedBox(height: 200.0),
             Text(
               elapsedTime, 
               textAlign: TextAlign.center,
@@ -48,20 +60,21 @@ class _FocusPageState extends State<FocusPage> {
               fontSize: 30, 
               fontWeight: FontWeight.bold)
             ),
+            SizedBox(height: 70.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 FloatingActionButton(
                     heroTag: "btn1",
-                    backgroundColor: Colors.red,
-                    onPressed: () => startOrStop(),
-                    child: Icon(Icons.pause)),
+                    backgroundColor: Colors.green,
+                    onPressed: () => startWatch(),
+                    child: Icon(Icons.play_arrow)),
                 SizedBox(width: 20.0),
                 FloatingActionButton(
                     heroTag: "btn2",
-                    backgroundColor: Colors.green,
-                    onPressed: null, //resetWatch,
-                    child: Icon(Icons.play_arrow)),
+                    backgroundColor: Colors.red,
+                    onPressed: () => _buildAboutDialog(context), 
+                    child: Icon(Icons.stop)),
               ],
             )
           ],
@@ -78,6 +91,7 @@ class _FocusPageState extends State<FocusPage> {
    startOrStop() {
     if(startStop) {
       startWatch();
+      AnimationWave();
     } else {
       stopWatch();
     }
@@ -98,6 +112,59 @@ class _FocusPageState extends State<FocusPage> {
       setTime();
     });
   }
+  
+  Widget _buildAboutDialog(BuildContext context) {
+    stopWatch();
+    var cancelButton = FlatButton(
+      child: Text(
+        "Cancel",
+        style: style.copyWith(
+          color: Colors.grey,
+          fontSize: 18, 
+          fontWeight: FontWeight.bold),
+        ),
+      onPressed: () => Navigator.pop(context),
+    );
+    var continueButton = FlatButton(
+      child: Text(
+        "Accept",
+        style: style.copyWith(
+          color: Colors.blue,
+          fontSize: 18, 
+          fontWeight: FontWeight.bold),
+        ),
+      onPressed: () {
+        Navigator.push(
+          context, 
+          MaterialPageRoute(
+            builder: (context) => DashboardPage(),
+          )
+        );
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text(
+        "Session Stopped",
+        style: style.copyWith(
+          color: Colors.black,
+          fontSize: 20, 
+          fontWeight: FontWeight.bold),
+        ),
+      content: Text("EEG signal has been recorded. \nWould you like to save?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 
   setTime() {
     var timeSoFar = watch.elapsedMilliseconds;
@@ -112,7 +179,7 @@ class _FocusPageState extends State<FocusPage> {
     int minutes = (seconds / 60).truncate();
     int hours = (minutes / 60).truncate();
 
-    String hoursStr = (hours % 60).toString().padLeft(2, '0');
+    String hoursStr = (hours % 60 ).toString().padLeft(2, '0');
     String minutesStr = (minutes % 60).toString().padLeft(2, '0');
     String secondsStr = (seconds % 60).toString().padLeft(2, '0');
 
