@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'dashboard.dart';
-import 'animation.dart';
+// import 'animation.dart';
 
 class FocusPage extends StatefulWidget {
   @override
@@ -30,26 +30,24 @@ class _FocusPageState extends State<FocusPage> {
   
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    DateTime now = DateTime.now();
-    String formattedDate = DateFormat('kk:mm:ss \nEEE d MMM').format(now);
+    // var screenSize = MediaQuery.of(context).size;
+    // DateTime now = DateTime.now();
+    // String formattedDate = DateFormat('kk:mm:ss \nEEE d MMM').format(now);
     return Scaffold(
       appBar: AppBar( 
         title: Text('Wed, November 27th, 2019'),
-        // title: Text(formattedDate),
       ),
       body: new Container(
         color: Colors.white,
         padding: EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            // new ClipPath(
-            //   child: new Container(
-            //     width: screenSize.width,
-            //     height: 200.0,
-            //     color: Colors.blue[500],
+            // MaterialApp(
+            //   title: 'Wave',
+            //   theme: ThemeData(
+            //     primarySwatch: Colors.blue,
             //   ),
-            //   clipper: new WaveClipper(now.value, sinWave),
+            //   home: AnimationWave()
             // ),
             SizedBox(height: 200.0),
             Text(
@@ -87,11 +85,11 @@ class _FocusPageState extends State<FocusPage> {
       //   primarySwatch: Colors.blue,
       // ),
       // home: AnimationWave()
+    // );
   }
    startOrStop() {
     if(startStop) {
       startWatch();
-      AnimationWave();
     } else {
       stopWatch();
     }
@@ -123,7 +121,12 @@ class _FocusPageState extends State<FocusPage> {
           fontSize: 18, 
           fontWeight: FontWeight.bold),
         ),
-      onPressed: () => Navigator.pop(context),
+      onPressed: () {
+        Navigator.pop(context);
+
+        //reset timer
+        
+      } 
     );
     var continueButton = FlatButton(
       child: Text(
