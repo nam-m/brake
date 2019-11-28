@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'video_player.dart';
 import 'connect.dart';
 import 'focus.dart';
 import 'profile.dart';
