@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'latest_session.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -10,13 +11,7 @@ class _ProfilePageState extends State<ProfilePage> {
   TextStyle style = TextStyle(fontFamily: 'Open Sans');
   final account_items = ['Account Information', 'Change Username or Password'];
   final personal_items = ['Latest Session', 'Focus Time', 'Session History', 'Set Goals', 'Achievements'];
-  final profile_items = ['Account Information', 'Change Username or Password', 
-  'Latest Session', 'Focus Time', 'Session History', 'Set Goals', 'Achievements'];
-
-  final security_items = ['Privacy', 'Services', 'Data Storage'];
-  final eeg_items = ['Calibration'];
-  final notification_items = ['Set Reminders', 'Email Preferences'];
-  final system_items = ['Your Brake Device', 'Region', 'Language'];
+  final profile_items = ['Latest Session', 'Focus Time', 'Session History', 'Set Goals', 'Achievements']; // move Latest Session separately
   
   @override
   Widget build(BuildContext context) {
@@ -33,6 +28,14 @@ class _ProfilePageState extends State<ProfilePage> {
               children: <Widget>[
                 ListTile(
                   title: Text(profile_items[index]),
+                  onTap: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(
+                        builder: (context) => LatestSessionPage(),
+                      )
+                    );
+                  },
                 ),
                 Divider(
                   color: Colors.grey,
