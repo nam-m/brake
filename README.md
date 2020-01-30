@@ -1,6 +1,6 @@
 # brake
 
-This is a demo mobile app for receiving EEG signal from headset, start/stop recording session and showing brainwave activity from MATLAB plot.
+This is a demo Android mobile app for receiving EEG signal from headset, start/stop recording session and showing brainwave activity from MATLAB plot.
 
 ### Including:
 - Login Page
