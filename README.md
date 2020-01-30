@@ -1,16 +1,8 @@
 # brake
 
-Flutter app for receiving EEG signal and notifying user when he/she loses focus
+This is a demo mobile app for receiving EEG signal from headset, start/stop recording session and showing brainwave activity from MATLAB plot.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Including:
+- Login Page
+- Start/Stop Recording
+- View MATLAB plot  
